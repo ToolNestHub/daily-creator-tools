@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="Free creator tools to generate social captions, hashtags and video hooks in seconds.">
+<title>Daily Creator Tools — Free Caption, Hashtag & Hook Generator</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d30;--panel2:#192740;--text:#f4f7fb;--muted:#aab8ce;--accent:#9bf3c8;--accent2:#b8a7ff;--border:#2a3a54}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#23355b 0,transparent 35%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{width:min(100% - 28px,920px);margin:auto}.top{padding:28px 0 18px;display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#0b1220;font-weight:900;font-size:20px}.brand{font-weight:800;letter-spacing:.2px}.small{font-size:13px;color:var(--muted)}
+.hero{padding:30px 0 24px}.pill{display:inline-block;border:1px solid #426451;background:#18362e;color:var(--accent);padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700}.hero h1{font-size:clamp(34px,8vw,56px);line-height:1.06;letter-spacing:-1.7px;margin:16px 0 14px}.hero h1 span{color:var(--accent)}.hero p{color:var(--muted);max-width:620px;margin:0;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 22px}.tool{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:15px 12px;cursor:pointer;color:var(--text);text-align:left;min-height:126px;transition:.15s}.tool[aria-pressed=true]{border-color:var(--accent);background:#172c31;box-shadow:0 0 0 1px #9bf3c833}.emoji{font-size:25px;display:block;margin-bottom:7px}.tool strong{display:block;font-size:14px}.tool small{color:var(--muted);font-size:12px;display:block;margin-top:4px}
+.panel{background:rgba(18,29,48,.94);border:1px solid var(--border);border-radius:22px;padding:20px;margin:0 0 18px}.panel h2{font-size:21px;margin:0 0 4px}.desc{color:var(--muted);font-size:14px;margin:0 0 18px}.field{margin:14px 0}.field label{display:block;font-size:14px;font-weight:700;margin-bottom:7px}input,select,textarea{width:100%;border:1px solid #354760;background:#0c1524;color:var(--text);padding:13px 14px;border-radius:12px;font:inherit;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--accent)}.btn{border:0;border-radius:12px;padding:13px 17px;font:inherit;font-weight:800;cursor:pointer}.primary{background:var(--accent);color:#0b1820;width:100%}.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--border)}.result{display:none;margin-top:18px;background:#0b1524;border:1px solid #354760;border-radius:15px;padding:16px}.result h3{margin:0 0 10px;font-size:15px}.resultText{white-space:pre-wrap;overflow-wrap:anywhere;color:#eaf0fa}.resultActions{display:flex;gap:9px;margin-top:14px}.resultActions button{flex:1}.note{font-size:12px;color:var(--muted);margin-top:12px}.footer{padding:14px 0 34px;text-align:center;color:var(--muted);font-size:12px}a{color:var(--accent)}
+@media(max-width:520px){.grid{grid-template-columns:1fr;gap:8px}.tool{min-height:0;display:flex;align-items:center;gap:12px;padding:12px}.emoji{margin:0;font-size:24px}.tool small{margin-top:1px}.tool .toolcopy{flex:1}.hero{padding-top:20px}.panel{padding:16px}.top{padding-top:20px}}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <div class="logo">D</div>
+  <div><div class="brand">Daily Creator Tools</div><div class="small">Small tools. Better content.</div></div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <span class="pill">100% FREE • NO SIGN-UP</span>
+    <h1>Create content<br>in <span>seconds.</span></h1>
+    <p>Quick helpers for your next Reel, Short or social post. Enter a topic, choose a tool, and copy your result.</p>
+  </section>
+
+  <section aria-label="Choose a tool">
+    <div class="grid">
+      <button class="tool" data-mode="caption" aria-pressed="true"><span class="emoji">✍️</span><span class="toolcopy"><strong>Caption Generator</strong><small>Write a post caption</small></span></button>
+      <button class="tool" data-mode="hashtags" aria-pressed="false"><span class="emoji">#️⃣</span><span class="toolcopy"><strong>Hashtag Generator</strong><small>Find topic hashtags</small></span></button>
+      <button class="tool" data-mode="hooks" aria-pressed="false"><span class="emoji">🎬</span><span class="toolcopy"><strong>Video Hook Generator</strong><small>Start strong</small></span></button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 id="formTitle">Caption Generator</h2>
+    <p class="desc" id="formDesc">Create a friendly caption for your next social media post.</p>
+    <form id="toolForm">
+      <div class="field"><label for="topic">What is your post or video about?</label><input id="topic" maxlength="100" placeholder="e.g. easy homemade sushi" required></div>
+      <div class="field"><label for="platform">Platform</label><select id="platform"><option>Instagram</option><option>TikTok</option><option>YouTube Shorts</option><option>Facebook</option><option>LinkedIn</option></select></div>
+      <div class="field"><label for="tone">Style</label><select id="tone"><option value="friendly">Friendly</option><option value="curious">Curious</option><option value="professional">Professional</option><option value="fun">Fun and casual</option></select></div>
+      <button class="btn primary" type="submit">Generate free result ✨</button>
+    </form>
+    <div class="result" id="result" aria-live="polite">
+      <h3>Your result</h3><div class="resultText" id="resultText"></div>
+      <div class="resultActions"><button class="btn secondary" id="copyBtn" type="button">Copy result</button><button class="btn secondary" id="againBtn" type="button">Try again</button></div>
+      <div class="note" id="copyNote">Tip: personalize the result before posting.</div>
+    </div>
+    <p class="note">This first version generates results in your browser. It does not send your topic to a server.</p>
+  </section>
+  <section class="panel">
+    <h2>How to use it</h2>
+    <p class="desc" style="margin-bottom:0">1. Pick a tool. 2. Enter a topic. 3. Generate and copy your result. More free tools can be added over time.</p>
+  </section>
+</main>
+<footer class="wrap footer">Daily Creator Tools · Free starter project · <span id="year"></span></footer>
+<script>
+const modes = {
+ caption:{title:"Caption Generator",desc:"Create a friendly caption for your next social media post."},
+ hashtags:{title:"Hashtag Generator",desc:"Get a starter set of hashtags related to your topic."},
+ hooks:{title:"Video Hook Generator",desc:"Try a few opening lines to catch a viewer's attention."}
+};
+let mode="caption";
+const $=id=>document.getElementById(id);
+document.querySelectorAll(".tool").forEach(btn=>btn.addEventListener("click",()=>{
+ mode=btn.dataset.mode;
+ document.querySelectorAll(".tool").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));
+ $("formTitle").textContent=modes[mode].title;$("formDesc").textContent=modes[mode].desc;
+ $("result").style.display="none";
+}));
+function cleanTopic(value){return value.trim().replace(/\s+/g," ")}
+function slugWords(value){return value.toLowerCase().replace(/[^a-z0-9\s]/g," ").trim().split(/\s+/).filter(Boolean)}
+function unique(arr){return [...new Set(arr)]}
+function generate(){
+ const topic=cleanTopic($("topic").value), platform=$("platform").value, tone=$("tone").value;
+ if(!topic)return "";
+ const openers={
+  friendly:["Here’s something worth sharing about","Let’s talk about","A little inspiration for today:"],
+  curious:["Have you ever wondered about","What if you tried","Here’s something you might not know about"],
+  professional:["A useful takeaway on","A closer look at","Here are a few thoughts on"],
+  fun:["Okay, let’s talk about","Not me thinking about","Your sign to explore"]
+ };
+ if(mode==="hashtags"){
+  const words=slugWords(topic).slice(0,4);
+  const tags=[...words.map(w=>"#"+w),"#"+platform.replace(/\s+/g,""),"#ContentCreator","#CreatorTips","#DailyInspiration","#LearnSomethingNew","#ExploreMore"];
+  return unique(tags).slice(0,12).join(" ");
+ }
+ if(mode==="hooks"){
+  const templates=[
+   `Stop scrolling if you’re interested in ${topic}.`,
+   `Three things I wish I knew earlier about ${topic}.`,
+   `Let’s make ${topic} easier in under a minute.`,
+   `Most people overlook this when it comes to ${topic}.`,
+   `Here’s a simple idea about ${topic} you can try today.`
+  ];
+  return unique(templates).join("\n\n");
+ }
+ const opener=openers[tone][Math.floor(Math.random()*openers[tone].length)];
+ const endings={
+  friendly:"Save this for later and share it with someone who might enjoy it. 💚",
+  curious:"What do you think? Tell me in the comments. 👇",
+  professional:"What has your experience been? Share your perspective below.",
+  fun:"Would you try it? Drop your thoughts below! ✨"
+ };
+ return `${opener} ${topic}.\n\n${endings[tone]}\n\n#${slugWords(topic).slice(0,3).join("")} #ContentCreator #DailyInspiration`;
+}
+$("toolForm").addEventListener("submit",e=>{e.preventDefault();$("resultText").textContent=generate();$("result").style.display="block";$("copyNote").textContent="Tip: personalize the result before posting.";});
+$("againBtn").addEventListener("click",()=>{$("resultText").textContent=generate();$("copyNote").textContent="Here’s another version. Personalize it before posting.";});
+$("copyBtn").addEventListener("click",async()=>{
+ const txt=$("resultText").textContent;
+ try{await navigator.clipboard.writeText(txt);$("copyNote").textContent="Copied! You can paste it into your social media app.";}
+ catch(e){const area=document.createElement("textarea");area.value=txt;document.body.appendChild(area);area.select();const ok=document.execCommand("copy");area.remove();$("copyNote").textContent=ok?"Copied! You can paste it into your social media app.":"Select and copy the result manually.";}
+});
+$("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
